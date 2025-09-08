@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Personalization Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏦 Personalized Banking Recommendations</h1>
+            <p>Get banking products tailored to your profile</p>
+        </header>
+        
+        <main>
+            <form action="/get_recommendations" method="post" class="user-form">
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="18" max="100" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="job">Occupation:</label>
+                    <select id="job" name="job" required>
+                        <option value="">Select your job</option>
+                        <option value="admin">Administrative</option>
+                        <option value="technician">Technical/IT</option>
+                        <option value="services">Services</option>
+                        <option value="management">Management</option>
+                        <option value="retired">Retired</option>
+                        <option value="student">Student</option>
+                        <option value="entrepreneur">Business Owner</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="education">Education:</label>
+                    <select id="education" name="education">
+                        <option value="secondary">High School</option>
+                        <option value="tertiary">College/University</option>
+                        <option value="professional">Professional Degree</option>
+                        <option value="unknown">Prefer not to say</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-btn">Get My Recommendations</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

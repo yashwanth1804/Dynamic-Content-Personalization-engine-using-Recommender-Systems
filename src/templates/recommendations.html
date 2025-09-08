@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Personalized Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Your Personalized Recommendations</h1>
+            <div class="user-info">
+                <p><strong>Profile:</strong> {{ recommendations.segment_name }}</p>
+                <p><strong>Age:</strong> {{ user_profile.age }} | <strong>Job:</strong> {{ user_profile.job }}</p>
+                <p><strong>Confidence Score:</strong> {{ recommendations.confidence_score * 100 }}%</p>
+            </div>
+        </header>
+        
+        <main>
+            <section class="products-section">
+                <h2>💳 Recommended Banking Products</h2>
+                <div class="products-grid">
+                    {% for product in recommendations.products %}
+                    <div class="product-card">
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.description }}</p>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <h2>📚 Helpful Resources</h2>
+                <div class="content-grid">
+                    {% for content in recommendations.content %}
+                    <div class="content-card {{ content.type }}">
+                        <h4>{{ content.title }}</h4>
+                        <span class="content-type">{{ content.type.title() }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            
+            <div class="actions">
+                <a href="/" class="back-btn">Try Another Profile</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
